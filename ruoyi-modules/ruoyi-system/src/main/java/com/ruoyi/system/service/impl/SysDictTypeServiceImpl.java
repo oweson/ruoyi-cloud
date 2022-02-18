@@ -115,7 +115,6 @@ public class SysDictTypeServiceImpl implements ISysDictTypeService
      * 批量删除字典类型信息
      * 
      * @param dictIds 需要删除的字典ID
-     * @return 结果
      */
     @Override
     public void deleteDictTypeByIds(Long[] dictIds)
@@ -190,7 +189,7 @@ public class SysDictTypeServiceImpl implements ISysDictTypeService
      * @return 结果
      */
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public int updateDictType(SysDictType dict)
     {
         SysDictType oldDict = dictTypeMapper.selectDictTypeById(dict.getDictId());
