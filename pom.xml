@@ -39,6 +39,9 @@
         <poi.version>4.1.2</poi.version>
         <commons-collections.version>3.2.2</commons-collections.version>
         <transmittable-thread-local.version>2.12.2</transmittable-thread-local.version>
+        <lombok.version>1.18.12</lombok.version>
+        <hutool.version>5.7.20</hutool.version>
+
     </properties>
 
     <!-- 依赖声明 -->
@@ -237,6 +240,22 @@
                 <artifactId>ruoyi-api-system</artifactId>
                 <version>${ruoyi.version}</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+
 
         </dependencies>
     </dependencyManagement>
