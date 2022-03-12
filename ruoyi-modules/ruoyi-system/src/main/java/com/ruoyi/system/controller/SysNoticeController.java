@@ -1,6 +1,10 @@
 package com.ruoyi.system.controller;
 
 import java.util.List;
+
+import com.ruoyi.common.core.domain.R;
+import com.ruoyi.system.api.common.CommonDemoService;
+import com.ruoyi.system.api.model.CommonDemo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,6 +36,8 @@ public class SysNoticeController extends BaseController
 {
     @Autowired
     private ISysNoticeService noticeService;
+    @Autowired
+    private CommonDemoService commonDemoService;
 
     /**
      * 获取通知公告列表
@@ -89,4 +95,15 @@ public class SysNoticeController extends BaseController
     {
         return toAjax(noticeService.deleteNoticeByIds(noticeIds));
     }
+
+    /**
+     * demo测试
+     */
+    @Log(title = "demoList测试", businessType = BusinessType.OTHER)
+    @GetMapping("/demo")
+    public R<List<CommonDemo>> commonDemo(@RequestBody CommonDemo commonDemo)
+    {
+        return commonDemoService.getDemoListInfo(commonDemo);
+    }
+
 }
