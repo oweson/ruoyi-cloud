@@ -8,7 +8,11 @@ import com.ruoyi.common.log.enums.BusinessType;
 import com.ruoyi.common.security.annotation.RequiresPermissions;
 import com.ruoyi.common.security.utils.SecurityUtils;
 import com.ruoyi.system.api.notice.api.entity.AppWrite;
+import com.ruoyi.system.api.notice.api.entity.FishBean;
 import com.ruoyi.system.api.notice.api.services.AppWriteClient;
+import com.ruoyi.system.api.notice.api.services.FishUrlClient;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +34,16 @@ public class AppWriteController extends BaseController {
     @Resource
     private AppWriteClient appWriteService;
 
+
+     @Resource
+   private FishUrlClient fishUrlClientService;
+
+
+   @PostMapping("/postFish")
+   @ApiOperation(value = "查询公告列表")
+  public ResponseEntity<FishBean> listNotices( FishBean fishBean){
+       return fishUrlClientService.listNotices(fishBean);
+   }
     @RequiresPermissions("system:write:view")
     @GetMapping()
     public String write() {

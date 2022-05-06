@@ -3,10 +3,17 @@ package com.ruoyi.system.controller.services;
 import com.ruoyi.common.core.text.Convert;
 import com.ruoyi.common.core.utils.DateUtils;
 import com.ruoyi.system.api.notice.api.entity.AppWrite;
+import com.ruoyi.system.api.notice.api.entity.FishBean;
 import com.ruoyi.system.api.notice.api.services.AppWriteClient;
+import com.ruoyi.system.api.notice.api.services.FishUrlClient;
 import com.ruoyi.system.mapper.AppWriteMapper;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
