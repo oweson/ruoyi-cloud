@@ -2,6 +2,8 @@ package com.ruoyi.system.controller.services;
 
 import com.ruoyi.common.core.text.Convert;
 import com.ruoyi.common.core.utils.DateUtils;
+import com.ruoyi.common.core.utils.ServletUtils;
+import com.ruoyi.system.api.model.AppWriteRequest;
 import com.ruoyi.system.api.notice.api.entity.AppWrite;
 import com.ruoyi.system.api.notice.api.entity.FishBean;
 import com.ruoyi.system.api.notice.api.services.AppWriteClient;
@@ -17,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author oweson
@@ -97,5 +101,25 @@ public class AppWriteServiceImpl implements AppWriteClient {
     @Override
     public int deleteAppWriteById(Long id) {
         return appWriteMapper.deleteAppWriteById(id);
+    }
+
+    @Override
+    public Object map(Map map) {
+        System.out.println(map);
+        map.put(1,1);
+        return map;
+    }
+
+    @Override
+    public Object map(AppWriteRequest appWriteRequest) {
+        List list1  = appWriteRequest.getList();
+        System.out.println(list1);
+        return list1;
+    }
+
+    @Override
+    public String demo() {
+        String app = ServletUtils.getRequest().getHeader("app");
+        return "ok"+app;
     }
 }

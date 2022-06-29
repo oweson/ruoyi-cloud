@@ -7,6 +7,7 @@ import com.ruoyi.common.log.annotation.Log;
 import com.ruoyi.common.log.enums.BusinessType;
 import com.ruoyi.common.security.annotation.RequiresPermissions;
 import com.ruoyi.common.security.utils.SecurityUtils;
+import com.ruoyi.system.api.model.AppWriteRequest;
 import com.ruoyi.system.api.notice.api.entity.AppWrite;
 import com.ruoyi.system.api.notice.api.entity.FishBean;
 import com.ruoyi.system.api.notice.api.services.AppWriteClient;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * app记录Controller
@@ -35,15 +37,16 @@ public class AppWriteController extends BaseController {
     private AppWriteClient appWriteService;
 
 
-     @Resource
-   private FishUrlClient fishUrlClientService;
+    @Resource
+    private FishUrlClient fishUrlClientService;
 
 
-   @PostMapping("/postFish")
-   @ApiOperation(value = "查询公告列表")
-  public ResponseEntity<FishBean> listNotices( FishBean fishBean){
-       return fishUrlClientService.listNotices(fishBean);
-   }
+    @PostMapping("/postFish")
+    @ApiOperation(value = "查询公告列表")
+    public ResponseEntity<FishBean> listNotices(FishBean fishBean) {
+        return fishUrlClientService.listNotices(fishBean);
+    }
+
     @RequiresPermissions("system:write:view")
     @GetMapping()
     public String write() {
@@ -114,5 +117,18 @@ public class AppWriteController extends BaseController {
     @ResponseBody
     public AjaxResult remove(String ids) {
         return toAjax(appWriteService.deleteAppWriteByIds(ids));
+    }
+
+
+    @GetMapping("/map")
+    public Object  map(@RequestParam("map") Map map){
+        return appWriteService.map(map);
+    }
+
+    @PostMapping("/List")
+    public Object  map(@RequestBody List<AppWrite> list){
+        AppWriteRequest appWriteRequest = new AppWriteRequest();
+        appWriteRequest.setList(list);
+        return appWriteService.map(appWriteRequest);
     }
 }

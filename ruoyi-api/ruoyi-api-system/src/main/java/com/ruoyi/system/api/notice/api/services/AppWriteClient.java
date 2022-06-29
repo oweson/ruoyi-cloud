@@ -1,14 +1,20 @@
 package com.ruoyi.system.api.notice.api.services;
 
 import com.ruoyi.common.core.constant.ServiceNameConstants;
+import com.ruoyi.system.api.model.AppWriteRequest;
 import com.ruoyi.system.api.notice.api.entity.AppWrite;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author oweson
@@ -37,7 +43,7 @@ public interface AppWriteClient {
      */
     @ApiOperation(value = "查询app记录列表")
     @GetMapping("/listAppWrite")
-    public List<AppWrite> selectAppWriteList(AppWrite appWrite);
+    public List<AppWrite> selectAppWriteList(@SpringQueryMap AppWrite appWrite);
 
     /**
      * 新增app记录
@@ -46,8 +52,8 @@ public interface AppWriteClient {
      * @return 结果
      */
     @ApiOperation(value = "新增app记录")
-    @GetMapping("/insertAppWrite")
-    public int insertAppWrite(AppWrite appWrite);
+    @PostMapping("/insertAppWrite")
+    public int insertAppWrite(@RequestBody AppWrite appWrite);
 
     /**
      * 修改app记录
@@ -56,8 +62,8 @@ public interface AppWriteClient {
      * @return 结果
      */
     @ApiOperation(value = "修改app记录")
-    @GetMapping("/updateAppWrite")
-    public int updateAppWrite(AppWrite appWrite);
+    @PostMapping("/updateAppWrite")
+    public int updateAppWrite(@RequestBody AppWrite appWrite);
 
     /**
      * 批量删除app记录
@@ -77,5 +83,14 @@ public interface AppWriteClient {
      */
     @ApiOperation(value = "删除app记录信息")
     @GetMapping("/deleteAppWriteById")
-    public int deleteAppWriteById(Long id);
+    public int deleteAppWriteById(@RequestParam("id") Long id);
+
+
+    @GetMapping("/map")
+    public Object  map(@RequestParam("map") Map map);
+
+    @PostMapping("/List")
+    public Object  map(@RequestBody AppWriteRequest appWriteRequest);
+    @PostMapping("/demo")
+    public String  demo();
 }
