@@ -23,7 +23,7 @@ import reactor.core.publisher.Mono;
 
 /**
  * 网关鉴权
- * 
+ *
  * @author ruoyi
  */
 @Component
@@ -78,7 +78,7 @@ public class AuthFilter implements GlobalFilter, Ordered
         addHeader(mutate, SecurityConstants.USER_KEY, userkey);
         addHeader(mutate, SecurityConstants.DETAILS_USER_ID, userid);
         addHeader(mutate, SecurityConstants.DETAILS_USERNAME, username);
-        // 内部请求来源参数清除
+        // 内部请求来源参数清除,防止外部直接调用接口！
         removeHeader(mutate, SecurityConstants.FROM_SOURCE);
         return chain.filter(exchange.mutate().request(mutate.build()).build());
     }

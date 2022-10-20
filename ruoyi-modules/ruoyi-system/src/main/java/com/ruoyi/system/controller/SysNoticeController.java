@@ -27,7 +27,7 @@ import com.ruoyi.system.service.ISysNoticeService;
 
 /**
  * 公告 信息操作处理
- * 
+ *
  * @author ruoyi
  */
 @RestController
@@ -42,7 +42,7 @@ public class SysNoticeController extends BaseController
     /**
      * 获取通知公告列表
      */
-    @RequiresPermissions("system:notice:list")
+   // @RequiresPermissions("system:notice:list")
     @GetMapping("/list")
     public TableDataInfo list(SysNotice notice)
     {

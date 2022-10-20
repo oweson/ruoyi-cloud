@@ -6,6 +6,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -15,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
  */
 
 @Api(value = "fish测试")
-@FeignClient(contextId = "fish-client", name = ServiceNameConstants.SYSTEM_SERVICE,url = "127.0.0.1:8080")
+//@FeignClient(contextId = "fish-client", name = ServiceNameConstants.SYSTEM_SERVICE,url = "127.0.0.1:8080")
+@FeignClient(contextId = "fish-client", name = ServiceNameConstants.SYSTEM_SERVICE,url = "127.0.0.1:8082")
+
 public interface FishUrlClient {
     /**
      * 查询公告列表
@@ -26,5 +30,10 @@ public interface FishUrlClient {
     @ApiOperation(value = "查询公告列表")
     @PostMapping("/demo/postFish")
     ResponseEntity<FishBean> listNotices(@RequestBody FishBean fishBean);
+
+
+    @ApiOperation(value = "查询mall列表")
+    @GetMapping ("/brand/listAll")
+    ResponseEntity<Object> listMalls();
 
 }

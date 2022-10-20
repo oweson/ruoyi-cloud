@@ -5,11 +5,11 @@
     <parent>
         <artifactId>ruoyi-modules</artifactId>
         <groupId>com.ruoyi</groupId>
-        <version>3.5.0</version>
+        <version>3.6.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ruoyi-module-public</artifactId>
+    <artifactId>ruoyi-modules-public</artifactId>
 
     <dependencies>
 
@@ -78,6 +78,9 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
+
+
 
     </dependencies>
 

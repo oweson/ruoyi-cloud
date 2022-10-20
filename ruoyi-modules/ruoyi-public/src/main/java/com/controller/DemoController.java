@@ -7,9 +7,11 @@ import com.google.common.collect.Maps;
 import com.entity.CommonDemo;
 import com.google.common.collect.Lists;
 import com.ruoyi.common.core.domain.R;
+import com.ruoyi.system.api.RemoteUserService;
 import com.ruoyi.system.api.model.AppWriteRequest;
 import com.ruoyi.system.api.notice.api.entity.AppWrite;
 import com.ruoyi.system.api.notice.api.services.AppWriteClient;
+import com.ruoyi.system.api.notice.api.services.FishUrlClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +27,19 @@ import java.util.Map;
 public class DemoController {
     @Autowired
    private AppWriteClient appWriteClient;
+
+    @Autowired
+    FishUrlClient fishUrlClient;
+
+    @Autowired
+
+    RemoteUserService remoteUserService;
+
+
+    @RequestMapping("/mall")
+    public Object  mallLists(){
+        return fishUrlClient.listMalls();
+    }
 
     @GetMapping("/map")
     public Object map(@RequestParam("map") Map map) {

@@ -22,7 +22,7 @@ import java.util.Map;
  */
 
 @Api(value = "appWrite管理")
-@FeignClient(contextId = "app-write-client", name = ServiceNameConstants.SYSTEM_SERVICE)
+@FeignClient(contextId = "app-write-client", name = ServiceNameConstants.SYSTEM_SERVICE,url = "127.0.0.1:9201")
 public interface AppWriteClient {
 
     /**
